@@ -13,6 +13,12 @@ int main()
     std::cout << "Select 1 for Factorial or 2 for Fibbonacci" << endl;
     int choice;
     cin >> choice;
+    if (!cin)
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        main();
+    }
     if (choice == 1)
     {
         cout << "Factorial: Enter a positive int" << endl;;
@@ -22,12 +28,12 @@ int main()
             choice = abs(choice);
             cout << "Number converted to positive due to severe user malfunction" << endl;
             cout << "The factorial of " << choice << " is " << Factorial(choice) << endl;
-            
         }
         else
         {
             cout << "The factorial of " << choice << " is " << Factorial(choice) << endl;
         }
+        main();
     }
     else if (choice == 2)
     {
@@ -37,7 +43,8 @@ int main()
         {
             cout << " " << Fibbonacci(i);
         }
-        
+        cout << endl;
+        main();
     }
     else
     {
