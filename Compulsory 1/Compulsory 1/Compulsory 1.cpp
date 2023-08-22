@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Long double ensures higher numbers can be calculated
 long double Factorial(int n);
 int Fibbonacci(int n);
 
@@ -13,12 +14,14 @@ int main()
     std::cout << "Select 1 for Factorial or 2 for Fibbonacci" << endl;
     int choice;
     cin >> choice;
+    //If input is not a number, clear the input and call main again.
     if (!cin)
     {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
         main();
     }
+    
     if (choice == 1)
     {
         cout << "Factorial: Enter a positive int" << endl;;
