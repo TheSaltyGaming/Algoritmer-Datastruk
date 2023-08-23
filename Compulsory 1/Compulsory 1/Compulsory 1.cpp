@@ -11,47 +11,48 @@ int Fibbonacci(int n);
 
 int main()
 {
-    std::cout << "Select 1 for Factorial or 2 for Fibbonacci" << endl;
-    int choice;
-    cin >> choice;
-    //If input is not a number, clear the input and call main again.
-    if (!cin)
+    while (true)
     {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(),'\n');
-        main();
-    }
-    
-    if (choice == 1)
-    {
-        cout << "Factorial: Enter a positive int" << endl;;
+        std::cout << "---------------------" << endl;
+        std::cout << "Select 1 for Factorial or 2 for Fibbonacci" << endl;
+        std::cout << "Alternatively, press 3 to exit" << endl;
+        std::cout << "---------------------" << endl;
+        int choice;
         cin >> choice;
-        if (choice < 0)
+        //If input is not a number, clear the input and call main again.
+        if (!cin)
         {
-            choice = abs(choice);
-            cout << "Number converted to positive due to severe user malfunction" << endl;
-            cout << "The factorial of " << choice << " is " << Factorial(choice) << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            continue;
         }
-        else
+        
+        if (choice == 1)
         {
-            cout << "The factorial of " << choice << " is " << Factorial(choice) << endl;
+            cout << "Factorial: Enter a positive int" << endl;;
+            cin >> choice;
+            if (choice < 0)
+            {
+                choice = abs(choice);
+                cout << "Number converted to positive due to severe user malfunction" << endl;
+                cout << "The factorial of " << choice << " is " << Factorial(choice) << endl;
+            }
+            else
+            {
+                cout << "The factorial of " << choice << " is " << Factorial(choice) << endl;
+            }
         }
-        main();
-    }
-    else if (choice == 2)
-    {
-        cout << "Fibbonacci: Enter the number of steps " << endl;
-        cin >> choice;
-        for (int i = 0; i < choice; i++)
+        else if (choice == 2)
         {
-            cout << " " << Fibbonacci(i);
+            cout << "Fibbonacci: Enter the number of steps " << endl;
+            cin >> choice;
+            for (int i = 0; i < choice; i++)
+            {
+                cout << " " << Fibbonacci(i);
+            }
+            cout << endl;
         }
-        cout << endl;
-        main();
-    }
-    else
-    {
-        main();
+        else if (choice == 3) break;
     }
 }
 
